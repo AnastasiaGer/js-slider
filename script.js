@@ -1,20 +1,48 @@
-function slidesPlugin(activeSlide = 0) {
-  const sliders = document.querySelectorAll('.slide')
+"use strict";
 
-  sliders[activeSlide].classList.add('active');
+const sliders = document.querySelectorAll(".slide");
+const btnLeft = document.getElementById("left");
+const btnRight = document.getElementById("right");
 
-  for (const slide of sliders) {
-    slide.addEventListener('click', () => {
-      clearActiveClasses()
-      slide.classList.add('active');
-    })
+let arr = Array.from(sliders);
+let imageCount = arr.length;
+let currentIndex = 0;
+let slideWidthPct = 150;
+//slider.width( imageCount * 100 + "vw");
+
+var container = document.querySelector(".container");
+
+//var width = container.offsetWidth;
+let containerWidth = 600;
+
+var centerX = (containerWidth / 2) + (slideWidthPct / 2);
+
+var slideLeft = function () {
+  if (currentIndex >= imageCount - 1) {
+    console.log("Last image reached");
+    return;
   }
-  
-  function clearActiveClasses() {
-    sliders.forEach((slide) => {
-      slide.classList.remove('active')
-    })
-  }
-}
+  currentIndex += 1;
+  console.log("Slide left");
 
-slidesPlugin()
+  sliders[currentIndex].style.transform =
+    "translateX(-" + currentIndex * centerX + "px)";
+};
+
+var slideRight = function () {
+  if (currentIndex === 0) {
+    console.log("First image reached");
+    return;
+  }
+  currentIndex -= 1;
+  console.log("Slide right");
+  sliders[currentIndex].style.transform = ("translateX(-" + currentIndex * centerX + "px)");
+};
+
+btnLeft.addEventListener("click", () => {
+  slideLeft();
+});
+
+btnRight.addEventListener("click", () => {
+  slideRight();
+});

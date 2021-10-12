@@ -36,14 +36,11 @@ h1{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  position: relative;
-
-  transition: all 500ms ease-in-out;
-
+  transition: transform .3s ease-in-out;
+  transform: translateX(0);
 }
 
-
+/* 
 .slide h3 {
   position: absolute;
   font-size: 24px;
@@ -56,4 +53,32 @@ h1{
 .slide.active h3{
   opacity: 1;
   transition: opacity .3s ease-in .4s;
+} */
+
+#controls {
+  position: relative;
+  width: 100vw;
+  display: block;
+  height: calc(10vw + 100px);
+}
+#controls .arrow {
+  display: block;
+  width: 100px;
+  top: 5vw;
+  background: lightgray;
+  height: 100px;
+  left: 5vw;
+  position: absolute;
+  font-size: 100px;
+  line-height: 80px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+#controls .arrow:hover {
+  background: lightblue;
+}
+#controls #right {
+  left: auto;
+  right: 5vw;
 }
