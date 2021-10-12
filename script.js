@@ -39,10 +39,21 @@ var slideRight = function () {
   sliders[currentIndex].style.transform = ("translateX(-" + currentIndex * centerX + "px)");
 };
 
-btnLeft.addEventListener("click", () => {
-  slideLeft();
-});
+// btnLeft.addEventListener("click", () => {
+//   slideLeft();
+// });
 
-btnRight.addEventListener("click", () => {
-  slideRight();
-});
+// btnRight.addEventListener("click", () => {
+//   slideRight();
+// });
+
+btnRight.onclick = function () {
+  container.scrollLeft += centerX;
+};
+btnLeft.onclick = function () {
+  container.scrollTo({
+    top: 100,
+    left: 100,
+    behavior: 'smooth'
+  });
+};
